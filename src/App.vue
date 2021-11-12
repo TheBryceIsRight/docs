@@ -1,7 +1,6 @@
 <template>
   <v-app>
-    <v-main>
-      <v-app-bar
+    <v-app-bar
       color="#4B466F"
       dark
     >
@@ -45,13 +44,15 @@
         </v-list>
       </v-menu>
     </v-app-bar>
+    <v-main>
+      
     
      <v-navigation-drawer
       v-model="drawer"
       absolute
-      bottom
+      clipped-left
       temporary
-      width=45%
+      width=550px
     >
       <v-list>
       <v-list-item>
@@ -169,16 +170,102 @@
       </v-list-group>
     </v-list>
     </v-navigation-drawer>
-   
+    <v-container>
+       <v-container>
+    <v-timeline>
+    <v-timeline-item
+      v-for="(year, i) in years"
+      :key="i"
+      :color="year.color"
+      small
+    >
+      <template v-slot:opposite>
+        <span
+          :class="`headline font-weight-bold ${year.color}--text`"
+          v-text="year.year"
+        ></span>
+      </template>
+      <div class="py-4">
+        <h2 :class="`headline font-weight-light mb-4 ${year.color}--text`">
+          {{documents[i].name}}
+        </h2>
+        <p>
+          {{documents[i].description}}
+        </p>
+      </div>
+    </v-timeline-item>
+  </v-timeline>
+  </v-container>
+</v-container>
     
       <router-view/>
+
     </v-main>
   </v-app>
 </template>
 
 <script>
+import axios from 'axios'
   export default {
+    name: 'App',
     data: () => ({
+        selected: [2],
+        years: [
+          {
+            color: 'cyan',
+            year: '2018 Q2',
+          },
+          {
+            color: 'green',
+            year: '2018 Q4',
+          },
+          {
+            color: 'pink',
+            year: '2019 Q2',
+          },
+          {
+            color: 'amber',
+            year: '2019 Q4',
+          },
+          {
+            color: 'orange',
+            year: '2020 Q3',
+          },
+        ],
+        items: [
+          {
+            action: '15 min',
+            headline: 'Wednesday at 12:57',
+            subtitle: `Resolved an issue where email notification was not received after certain orchestration executions.`,
+            title: "What's New in Version 5.0.16?",
+          },
+          {
+            action: '2 hr',
+            headline: 'November 03, 2021 07:00',
+            subtitle: `Resolved an issue where certain orchestration APIs were not triggering the start of an orchestration`,
+            title: "What's New in Version 5.0.15?",
+          },
+          {
+            action: '6 hr',
+            headline: 'October 25, 2021 12:23',
+            subtitle: 'Resolved a performance issue on certain popups throughout the application.',
+            title: "What's New in Version 5.0.14?",
+          },
+          {
+            action: '12 hr',
+            headline: 'October 12, 2021 09:22',
+            subtitle: 'Resolved a Slider View display issue occurring in certain tests.',
+            title: "What's New in Version 5.0.13?",
+          },
+          {
+            action: '18hr',
+            headline: 'October 08, 2021 08:28',
+            subtitle: 'Obfuscated passwords used in site authentication test cases in the Slider View.',
+            title: "What's New in Version 5.0.12?",
+          },
+        ],
+      documents: [],
+      error: null,
       drawer: false,
       group: null,
       admins: [
@@ -208,6 +295,15 @@
         ['Delete', 'mdi-delete'],
       ],
     }),
+    async mounted () {
+      try {
+        const response = await axios.get('http://localhost:1337/documentations')
+        this.documents = response.data
+        console.log(this.documents);
+      } catch (error) {
+        this.error = error;
+      }
+    },
 
     watch: {
       group () {

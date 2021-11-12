@@ -1,0 +1,28 @@
+{
+  "kind": "collectionType",
+  "collectionName": "documentations",
+  "info": {
+    "name": "document",
+    "description": ""
+  },
+  "options": {
+    "increments": true,
+    "timestamps": true,
+    "draftAndPublish": true
+  },
+  "pluginOptions": {},
+  "attributes": {
+    "name": {
+      "type": "string",
+      "required": true,
+      "unique": true
+    },
+    "description": {
+      "type": "richtext"
+    },
+    "categories": {
+      "via": "documents",
+      "collection": "category"
+    }
+  }
+}
