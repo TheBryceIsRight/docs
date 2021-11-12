@@ -44,13 +44,11 @@
         </v-list>
       </v-menu>
     </v-app-bar>
-    <v-main>
-      
-    
-     <v-navigation-drawer
+    <v-navigation-drawer
       v-model="drawer"
       absolute
-      clipped-left
+      scrollable
+      left
       temporary
       width=550px
     >
@@ -151,12 +149,56 @@
         >
           <template v-slot:activator>
             <v-list-item-content>
-              <v-list-item-title>Actions</v-list-item-title>
+              <v-list-item-title>Projects</v-list-item-title>
             </v-list-item-content>
           </template>
 
           <v-list-item
-            v-for="([title, icon], i) in cruds"
+            v-for="([title, icon], i) in projects"
+            :key="i"
+            link
+          >
+            <v-list-item-title v-text="title"></v-list-item-title>
+
+            <v-list-item-icon>
+              <v-icon v-text="icon"></v-icon>
+            </v-list-item-icon>
+          </v-list-item>
+        </v-list-group>
+        <v-list-group
+          no-action
+          sub-group
+        >
+          <template v-slot:activator>
+            <v-list-item-content>
+              <v-list-item-title>Architect Test Creation</v-list-item-title>
+            </v-list-item-content>
+          </template>
+
+          <v-list-item
+            v-for="([title, icon], i) in architect"
+            :key="i"
+            link
+          >
+            <v-list-item-title v-text="title"></v-list-item-title>
+
+            <v-list-item-icon>
+              <v-icon v-text="icon"></v-icon>
+            </v-list-item-icon>
+          </v-list-item>
+        </v-list-group>
+         <v-list-group
+          no-action
+          sub-group
+        >
+          <template v-slot:activator>
+            <v-list-item-content>
+              <v-list-item-title>NLP Test Creation</v-list-item-title>
+            </v-list-item-content>
+          </template>
+
+          <v-list-item
+            v-for="([title, icon], i) in nlp"
             :key="i"
             link
           >
@@ -168,8 +210,96 @@
           </v-list-item>
         </v-list-group>
       </v-list-group>
+      <v-list-group
+        :value="true"
+        prepend-icon="mdi-alert-decagram "
+      >
+        <template v-slot:activator>
+          <v-list-item-title>Release Notes</v-list-item-title>
+        </template>
+
+
+
+        <v-list-group
+          :value="false"
+          no-action
+          sub-group
+        >
+          <template v-slot:activator>
+            <v-list-item-content>
+              <v-list-item-title>Functionize Release Notes</v-list-item-title>
+            </v-list-item-content>
+          </template>
+
+          <v-list-item
+            v-for="([title, icon], i) in training"
+            :key="i"
+            link
+          >
+            <v-list-item-title v-text="title"></v-list-item-title>
+
+            <v-list-item-icon>
+              <v-icon v-text="icon"></v-icon>
+            </v-list-item-icon>
+          </v-list-item>
+        </v-list-group>
+
+                <v-list-group
+          :value="false"
+          no-action
+          sub-group
+        >
+          <template v-slot:activator>
+            <v-list-item-content>
+              <v-list-item-title>Architect Release Notes</v-list-item-title>
+            </v-list-item-content>
+          </template>
+
+          <v-list-item
+            v-for="([title, icon], i) in administration"
+            :key="i"
+            link
+          >
+            <v-list-item-title v-text="title"></v-list-item-title>
+
+            <v-list-item-icon>
+              <v-icon v-text="icon"></v-icon>
+            </v-list-item-icon>
+          </v-list-item>
+        </v-list-group>
+        
+        <v-list-group
+          :value="true"
+          no-action
+          sub-group
+        >
+          <template v-slot:activator>
+            <v-list-item-content>
+              <v-list-item-title>Feature Highlights</v-list-item-title>
+            </v-list-item-content>
+          </template>
+
+          <v-list-item
+            v-for="([title, icon], i) in admins"
+            :key="i"
+            link
+          >
+            <v-list-item-title v-text="title"></v-list-item-title>
+
+            <v-list-item-icon>
+              <v-icon v-text="icon"></v-icon>
+            </v-list-item-icon>
+          </v-list-item>
+        </v-list-group>
+
+        
+      </v-list-group>
     </v-list>
     </v-navigation-drawer>
+    <v-main>
+      
+    
+     
     <v-container>
        <v-container>
     <v-timeline>
@@ -287,6 +417,39 @@ import axios from 'axios'
         ['Product Limitations', 'mdi-cog'],
         ['List of Devices supported', 'mdi-cog'],
         ['How to add a new user to functionize (admin only)', 'mdi-cog'],
+      ],
+      projects: [
+        ['Proxy Settings', 'mdi-cog'],
+        ['Create a new project', 'mdi-cog'],
+        ['Project Settings', 'mdi-cog'],
+        ['Create, enable, move, or copy site environment', 'mdi-cog'],
+      ],
+      architect: [
+        ['Context Switch Action', 'mdi-cog'],
+        ['Scroll Actions', 'mdi-cog'],
+        ['Hover Actions', 'mdi-cog'],
+        ['Wait Actions', 'mdi-cog'],
+        ['Resource Variables', 'mdi-cog'],
+        ['Project Variables in Architect', 'mdi-cog'],
+        ['Test Variables', 'mdi-cog'],
+        ['Visual Verification Overview', 'mdi-cog'],
+        ['Full Page Verification', 'mdi-cog'],
+        ['Element Verifications', 'mdi-cog'],
+      ],
+      nlp: [
+        ['Effective Test Case Writing in Natural Language Processing (NLP)', 'mdi-cog'],
+        ['Create a New NLP Test Case', 'mdi-cog'],
+        ['Sample NLP Test Case', 'mdi-cog'],
+        ['Review a Test Case', 'mdi-cog'],
+        ['Keywords Used by the NLP System', 'mdi-cog'],
+        ['Essentials of Submitting NLP Test Cases', 'mdi-cog'],
+        ['File Format for Submitting NLP Test Cases', 'mdi-cog'],
+        ['Random Email Generation & Validation in NLP', 'mdi-cog'],
+        ['Most Common Causes for Remodeling Test Cases', 'mdi-cog'],
+        ['Adding a Computer Vision Validation to an Existing Step in NLP', 'mdi-cog'],
+        ['Cookies, Headers, and HTML5 Storage', 'mdi-cog'],
+        ['API Test Creation', 'mdi-cog'],
+        ['Upload a File to Use in an NLP Test Case', 'mdi-cog'],
       ],
       cruds: [
         ['Create', 'mdi-plus-outline'],
