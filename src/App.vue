@@ -189,9 +189,9 @@
         <h2 :class="`headline font-weight-light mb-4 ${year.color}--text`">
           {{documents[i].name}}
         </h2>
-        <p>
+        <div markdown="1">
           {{documents[i].description}}
-        </p>
+        </div>
       </div>
     </v-timeline-item>
   </v-timeline>
