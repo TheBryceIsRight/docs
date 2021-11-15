@@ -47,10 +47,9 @@
     <v-navigation-drawer
       v-model="drawer"
       absolute
-      scrollable
-      left
+      bottom
       temporary
-      width=550px
+      width=60%
     >
       <v-list>
       <v-list-item>
@@ -62,7 +61,7 @@
       </v-list-item>
 
       <v-list-group
-        :value="true"
+        :value="false"
         prepend-icon="mdi-book-open-page-variant "
       >
         <template v-slot:activator>
@@ -87,11 +86,10 @@
             :key="i"
             link
           >
-            <v-list-item-title v-text="title"></v-list-item-title>
-
             <v-list-item-icon>
               <v-icon v-text="icon"></v-icon>
             </v-list-item-icon>
+            <v-list-item-title v-text="title"></v-list-item-title>
           </v-list-item>
         </v-list-group>
 
@@ -111,16 +109,16 @@
             :key="i"
             link
           >
-            <v-list-item-title v-text="title"></v-list-item-title>
 
             <v-list-item-icon>
               <v-icon v-text="icon"></v-icon>
             </v-list-item-icon>
+            <v-list-item-title v-text="title"></v-list-item-title>
           </v-list-item>
         </v-list-group>
         
         <v-list-group
-          :value="true"
+          :value="false"
           no-action
           sub-group
         >
@@ -135,11 +133,10 @@
             :key="i"
             link
           >
-            <v-list-item-title v-text="title"></v-list-item-title>
-
             <v-list-item-icon>
               <v-icon v-text="icon"></v-icon>
             </v-list-item-icon>
+            <v-list-item-title v-text="title"></v-list-item-title>
           </v-list-item>
         </v-list-group>
 
@@ -158,11 +155,11 @@
             :key="i"
             link
           >
-            <v-list-item-title v-text="title"></v-list-item-title>
 
             <v-list-item-icon>
               <v-icon v-text="icon"></v-icon>
             </v-list-item-icon>
+            <v-list-item-title v-text="title"></v-list-item-title>
           </v-list-item>
         </v-list-group>
         <v-list-group
@@ -180,11 +177,12 @@
             :key="i"
             link
           >
-            <v-list-item-title v-text="title"></v-list-item-title>
 
             <v-list-item-icon>
               <v-icon v-text="icon"></v-icon>
             </v-list-item-icon>
+            <v-list-item-title v-text="title"></v-list-item-title>
+
           </v-list-item>
         </v-list-group>
          <v-list-group
@@ -202,16 +200,184 @@
             :key="i"
             link
           >
-            <v-list-item-title v-text="title"></v-list-item-title>
-
             <v-list-item-icon>
               <v-icon v-text="icon"></v-icon>
             </v-list-item-icon>
+            <v-list-item-title v-text="title"></v-list-item-title>
           </v-list-item>
         </v-list-group>
+        <v-list-group
+          no-action
+          sub-group
+        >
+          <template v-slot:activator>
+            <v-list-item-content>
+              <v-list-item-title>Test Case Management</v-list-item-title>
+            </v-list-item-content>
+          </template>
+
+          <v-list-item
+            v-for="([title, icon], i) in test_case_management"
+            :key="i"
+            link
+          >
+            <v-list-item-icon>
+              <v-icon v-text="icon"></v-icon>
+            </v-list-item-icon>
+            <v-list-item-title v-text="title"></v-list-item-title>
+          </v-list-item>
+        </v-list-group>
+        <v-list-group
+          no-action
+          sub-group
+        >
+          <template v-slot:activator>
+            <v-list-item-content>
+              <v-list-item-title>Test Data Management - Data Driven Testing</v-list-item-title>
+            </v-list-item-content>
+          </template>
+
+          <v-list-item
+            v-for="([title, icon], i) in test_data_management"
+            :key="i"
+            link
+          >
+            <v-list-item-icon>
+              <v-icon v-text="icon"></v-icon>
+            </v-list-item-icon>
+            <v-list-item-title v-text="title"></v-list-item-title>
+          </v-list-item>
+        </v-list-group>
+        <v-list-group
+          no-action
+          sub-group
+        >
+          <template v-slot:activator>
+            <v-list-item-content>
+              <v-list-item-title>Test Executions & Orchestrations</v-list-item-title>
+            </v-list-item-content>
+          </template>
+
+          <v-list-item
+            v-for="([title, icon], i) in executions_and_orchestrations"
+            :key="i"
+            link
+          >
+            <v-list-item-icon>
+              <v-icon v-text="icon"></v-icon>
+            </v-list-item-icon>
+            <v-list-item-title v-text="title"></v-list-item-title>
+          </v-list-item>
+        </v-list-group><v-list-group
+          no-action
+          sub-group
+        >
+          <template v-slot:activator>
+            <v-list-item-content>
+              <v-list-item-title>Test Editing & Debugging</v-list-item-title>
+            </v-list-item-content>
+          </template>
+
+          <v-list-item
+            v-for="([title, icon], i) in editing_and_debugging"
+            :key="i"
+            link
+          >
+            <v-list-item-icon>
+              <v-icon v-text="icon"></v-icon>
+            </v-list-item-icon>
+            <v-list-item-title v-text="title"></v-list-item-title>
+          </v-list-item>
+        </v-list-group><v-list-group
+          no-action
+          sub-group
+        >
+          <template v-slot:activator>
+            <v-list-item-content>
+              <v-list-item-title>Functionize Tools</v-list-item-title>
+            </v-list-item-content>
+          </template>
+
+          <v-list-item
+            v-for="([title, icon], i) in fze_tools"
+            :key="i"
+            link
+          >
+            <v-list-item-icon>
+              <v-icon v-text="icon"></v-icon>
+            </v-list-item-icon>
+            <v-list-item-title v-text="title"></v-list-item-title>
+          </v-list-item>
+        </v-list-group><v-list-group
+          no-action
+          sub-group
+        >
+          <template v-slot:activator>
+            <v-list-item-content>
+              <v-list-item-title>Reusable workflows: components</v-list-item-title>
+            </v-list-item-content>
+          </template>
+
+          <v-list-item
+            v-for="([title, icon], i) in components"
+            :key="i"
+            link
+          >
+            <v-list-item-icon>
+              <v-icon v-text="icon"></v-icon>
+            </v-list-item-icon>
+            <v-list-item-title v-text="title"></v-list-item-title>
+          </v-list-item>
+        </v-list-group><v-list-group
+          no-action
+          sub-group
+        >
+          <template v-slot:activator>
+            <v-list-item-content>
+              <v-list-item-title>Integrations</v-list-item-title>
+            </v-list-item-content>
+          </template>
+
+          <v-list-item
+            v-for="([title, icon], i) in integrations"
+            :key="i"
+            link
+          >
+            <v-list-item-icon>
+              <v-icon v-text="icon"></v-icon>
+            </v-list-item-icon>
+            <v-list-item-title v-text="title"></v-list-item-title>
+          </v-list-item>
+        </v-list-group><v-list-group
+          no-action
+          sub-group
+        >
+          <template v-slot:activator>
+            <v-list-item-content>
+              <v-list-item-title>Reporting & Performance Metrics</v-list-item-title>
+            </v-list-item-content>
+          </template>
+
+          <v-list-item
+            v-for="([title, icon], i) in reporting_and_performance_metrics"
+            :key="i"
+            link
+          >
+            <v-list-item-icon>
+              <v-icon v-text="icon"></v-icon>
+            </v-list-item-icon>
+            <v-list-item-title v-text="title"></v-list-item-title>
+          </v-list-item>
+        </v-list-group>
+
+
+
+
+
       </v-list-group>
+
       <v-list-group
-        :value="true"
+        :value="false"
         prepend-icon="mdi-alert-decagram "
       >
         <template v-slot:activator>
@@ -232,15 +398,15 @@
           </template>
 
           <v-list-item
-            v-for="([title, icon], i) in training"
+            v-for="([title, icon], i) in release"
             :key="i"
             link
           >
-            <v-list-item-title v-text="title"></v-list-item-title>
-
             <v-list-item-icon>
               <v-icon v-text="icon"></v-icon>
             </v-list-item-icon>
+            <v-list-item-title v-text="title"></v-list-item-title>
+
           </v-list-item>
         </v-list-group>
 
@@ -256,20 +422,21 @@
           </template>
 
           <v-list-item
-            v-for="([title, icon], i) in administration"
+            v-for="([title, icon], i) in architect_version"
             :key="i"
             link
           >
-            <v-list-item-title v-text="title"></v-list-item-title>
 
             <v-list-item-icon>
               <v-icon v-text="icon"></v-icon>
             </v-list-item-icon>
+            <v-list-item-title v-text="title"></v-list-item-title>
+
           </v-list-item>
         </v-list-group>
         
         <v-list-group
-          :value="true"
+          :value="false"
           no-action
           sub-group
         >
@@ -280,17 +447,76 @@
           </template>
 
           <v-list-item
-            v-for="([title, icon], i) in admins"
+            v-for="([title, icon], i) in feature_highlights"
             :key="i"
             link
           >
-            <v-list-item-title v-text="title"></v-list-item-title>
-
             <v-list-item-icon>
               <v-icon v-text="icon"></v-icon>
             </v-list-item-icon>
+            <v-list-item-title v-text="title"></v-list-item-title>
           </v-list-item>
         </v-list-group>
+
+        
+      </v-list-group>
+      
+      <v-list-group
+        :value="false"
+        prepend-icon="mdi-help-circle-outline "
+      >
+        <template v-slot:activator>
+          <v-list-item-title>Troubleshooting</v-list-item-title>
+        </template>
+
+
+
+        <v-list-group
+          :value="false"
+          no-action
+          sub-group
+        >
+          <template v-slot:activator>
+            <v-list-item-content>
+              <v-list-item-title>Best Practices</v-list-item-title>
+            </v-list-item-content>
+          </template>
+
+          <v-list-item
+            v-for="([title, icon], i) in best_practices"
+            :key="i"
+            link
+          >
+            <v-list-item-icon>
+              <v-icon v-text="icon"></v-icon>
+            </v-list-item-icon>
+            <v-list-item-title v-text="title"></v-list-item-title>
+
+          </v-list-item>
+        </v-list-group>
+
+        <v-list-group
+          :value="false"
+          no-action
+          sub-group
+        >
+          <template v-slot:activator>
+            <v-list-item-content>
+              <v-list-item-title>Frequently Asked Questions</v-list-item-title>
+            </v-list-item-content>
+          </template>
+          <v-list-item
+            v-for="([title, icon], i) in faq"
+            :key="i"
+            link
+          >
+            <v-list-item-icon>
+              <v-icon v-text="icon"></v-icon>
+            </v-list-item-icon>
+            <v-list-item-title v-text="title"></v-list-item-title>
+          </v-list-item>
+        </v-list-group>
+      
 
         
       </v-list-group>
@@ -334,12 +560,13 @@
   </v-app>
 </template>
 
+
 <script>
 import axios from 'axios'
   export default {
     name: 'App',
     data: () => ({
-        selected: [2],
+        selected: [],
         years: [
           {
             color: 'cyan',
@@ -399,57 +626,254 @@ import axios from 'axios'
       drawer: false,
       group: null,
       admins: [
-        ['Orchestrations', 'mdi-account-multiple-outline'],
-        ['Test Case Execution', 'mdi-cog-outline'],
+        ['Orchestrations', 'mdi-chart-timeline-variant-shimmer'],
+        ['Test Case Execution', 'mdi-play'],
       ],
       training: [
-        ['Getting the most out of self paced onboarding & training', 'mdi-school'],
-        ['Intro & Prerequisites for training', 'mdi-school'],
-        ['Session 1 - Create a test & execute', 'mdi-school'],
-        ['Session 2 - NLP Creation, debugging, & editing tests', 'mdi-school'],
-        ['Session 3 - Page Objects & Orchestrations', 'mdi-school'],
-        ['Session 4 - TDM, Settings, & Integrations', 'mdi-school'],
-        ['Opening and formatting support tickets', 'mdi-school'],
-        ['Escalating support tickets', 'mdi-school'],
+        ['Getting the most out of self paced onboarding & training', 'mdi-message-text'],
+        ['Intro & Prerequisites for training', 'mdi-hammer-wrench'],
+        ['Session 1 - Create a test & execute', 'mdi-numeric-1'],
+        ['Session 2 - NLP Creation, debugging, & editing tests', 'mdi-numeric-2'],
+        ['Session 3 - Page Objects & Orchestrations', 'mdi-numeric-3'],
+        ['Session 4 - TDM, Settings, & Integrations', 'mdi-numeric-4'],
+        ['Opening and formatting support tickets', 'mdi-ticket-confirmation'],
+        ['Escalating support tickets', 'mdi-account-supervisor'],
       ],
       administration: [
-        ['SSO Configurations', 'mdi-cog'],
-        ['Product Limitations', 'mdi-cog'],
-        ['List of Devices supported', 'mdi-cog'],
-        ['How to add a new user to functionize (admin only)', 'mdi-cog'],
+        ['SSO Configurations', 'mdi-account'],
+        ['Product Limitations', 'mdi-speedometer'],
+        ['List of Devices supported', 'mdi-devices'],
+        ['How to add a new user to functionize (admin only)', 'mdi-account-plus'],
       ],
       projects: [
-        ['Proxy Settings', 'mdi-cog'],
-        ['Create a new project', 'mdi-cog'],
+        ['Proxy Settings', 'mdi-web'],
+        ['Create a new project', 'mdi-plus'],
         ['Project Settings', 'mdi-cog'],
-        ['Create, enable, move, or copy site environment', 'mdi-cog'],
+        ['Create, enable, move, or copy site environment', 'mdi-cloud'],
       ],
       architect: [
-        ['Context Switch Action', 'mdi-cog'],
-        ['Scroll Actions', 'mdi-cog'],
-        ['Hover Actions', 'mdi-cog'],
-        ['Wait Actions', 'mdi-cog'],
-        ['Resource Variables', 'mdi-cog'],
+        ['Context Switch Action', 'mdi-rotate-3d-variant'],
+        ['Scroll Actions', 'mdi-unfold-more-horizontal'],
+        ['Hover Actions', 'mdi-cursor-default'],
+        ['Wait Actions', 'mdi-timer-sand'],
+        ['Resource Variables', 'mdi-application-outline'],
         ['Project Variables in Architect', 'mdi-cog'],
         ['Test Variables', 'mdi-cog'],
-        ['Visual Verification Overview', 'mdi-cog'],
-        ['Full Page Verification', 'mdi-cog'],
-        ['Element Verifications', 'mdi-cog'],
+        ['Visual Verification Overview', 'mdi-eye'],
+        ['Full Page Verification', 'mdi-eye'],
+        ['Element Verifications', 'mdi-eye'],
       ],
       nlp: [
-        ['Effective Test Case Writing in Natural Language Processing (NLP)', 'mdi-cog'],
-        ['Create a New NLP Test Case', 'mdi-cog'],
-        ['Sample NLP Test Case', 'mdi-cog'],
-        ['Review a Test Case', 'mdi-cog'],
-        ['Keywords Used by the NLP System', 'mdi-cog'],
-        ['Essentials of Submitting NLP Test Cases', 'mdi-cog'],
-        ['File Format for Submitting NLP Test Cases', 'mdi-cog'],
-        ['Random Email Generation & Validation in NLP', 'mdi-cog'],
-        ['Most Common Causes for Remodeling Test Cases', 'mdi-cog'],
-        ['Adding a Computer Vision Validation to an Existing Step in NLP', 'mdi-cog'],
-        ['Cookies, Headers, and HTML5 Storage', 'mdi-cog'],
-        ['API Test Creation', 'mdi-cog'],
-        ['Upload a File to Use in an NLP Test Case', 'mdi-cog'],
+        ['Effective Test Case Writing in Natural Language Processing (NLP)', 'mdi-draw'],
+        ['Create a New NLP Test Case', 'mdi-plus'],
+        ['Sample NLP Test Case', 'mdi-file'],
+        ['Review a Test Case', 'mdi-file-find'],
+        ['Keywords Used by the NLP System', 'mdi-format-list-bulleted'],
+        ['Essentials of Submitting NLP Test Cases', 'mdi-plus'],
+        ['File Format for Submitting NLP Test Cases', 'mdi-file'],
+        ['Random Email Generation & Validation in NLP', 'mdi-email'],
+        ['Most Common Causes for Remodeling Test Cases', 'mdi-alert-circle'],
+        ['Adding a Computer Vision Validation to an Existing Step in NLP', 'mdi-eye'],
+        ['Cookies, Headers, and HTML5 Storage', 'mdi-cookie'],
+        ['API Test Creation', 'mdi-code-tags'],
+        ['Upload a File to Use in an NLP Test Case', 'mdi-file'],
+      ],
+      test_case_management: [
+        ['Extensions', 'mdi-puzzle'],
+        ['Test Case Status', 'mdi-check-circle'],
+        ['Action Log Settings', 'mdi-cog'],
+        ['Test Settings', 'mdi-file-cog'],
+        ['Create a Folder', 'mdi-folder-plus'],
+        ['Create a Tag', 'mdi-tag'],
+        ['Performing Bulk Actions', 'mdi-select-all'],
+        ['Copy To/Move To Actions', 'mdi-folder-move'],
+        ['Add an Action to an Existing Test Case', 'mdi-plus'],
+      ],
+      test_data_management: [
+        ['Mapping Test Data', 'mdi-map'],
+        ['Data Source Creation', 'mdi-file-plus'],
+        ['Orchestrations', 'mdi-chart-timeline-variant-shimmer'],
+      ],
+      best_practices: [
+        ['Best Practices for Creating NLP Test Cases', 'mdi-thumb-up'],
+        ['Best Practices for Creating Effective Test Cases', 'mdi-plus'],
+        ['Best Practices for Using Architect', 'mdi-thumb-up'],
+        ['Best Practices for Using Verifications', 'mdi-file-find'],
+        ['Best Practices for Performance Maintenance | ML Engine', 'mdi-cog'],
+      ],
+      executions_and_orchestrations: [
+        ['Create an orcehstration', 'mdi-plus'],
+        ['View Orchestration Results', 'mdi-chart-timeline-variant-shimmer'],
+        ['Execute a Test Case', 'mdi-play'],
+        ['Perform a Load Test', 'mdi-chart-box'],
+        ['Perform a Stress Test', 'mdi-chart-box'],
+      ],
+      editing_and_debugging: [
+        ['Smart Screenshots Overview', 'mdi-image-filter-black-white'],
+        ['Quick Select', 'mdi-cursor-default'],
+        ['Quick Add Actions', 'mdi-plus'],
+        ['SmartFix', 'mdi-alert-circle'],
+        ['Editing a Test Case', 'mdi-pencil'],
+        ['Diagnosing a Failed Test Case', 'mdi-message-alert'],
+        ['How to Debug a Failing Test Case', 'mdi-bug'],
+        ['Live Debug', 'mdi-bug'],
+        ['Live Edit', 'mdi-pencil'],
+        ['Action Log', 'mdi-cog'],
+        ['Customizing Tests with Selectors', 'mdi-image-size-select-small'],
+        ['Customizing Executors', 'mdi-image-size-select-small'],
+        ['Attribute Editor', 'mdi-pencil'],
+        ['Making Steps Optional or Suppressed in a Test Case', 'mdi-step-forward'],
+        ['Decision Actions', 'mdi-source-branch'],
+        ['Force Fail a Passing Test Case', 'mdi-alert-circle-check'],
+        ['Delete a Step from a Test Case', 'mdi-delete'],
+      ],
+      fze_tools: [
+        ['Functionize CLI Usage Guide', 'mdi-console'],
+        ['Functionize Command Line Interface (CLI)', 'mdi-console'],
+        ['Download and Install the Functionize CLI', 'mdi-download'],
+        ['Functionize CLI Tunnel', 'mdi-console'],
+        ['Email Reader Tool', 'mdi-email'],
+        ['File Viewer Tool', 'mdi-file'],
+        ['DB Explorer', 'mdi-database'],
+      ],
+      components: [
+        ['Page Objects creation', 'mdi-plus'],
+        ['Adding an Existing Page Object During Test Case Creation in Architect', 'mdi-plus'],
+        ['Create a Page Object Within an Existing Test Case', 'mdi-plus'],
+        ['How to Edit a Page Object', 'mdi-pencil'],
+        ['NLP Page Objects Creation and Usage', 'mdi-text'],
+      ],
+      integrations: [
+        ['Jira Defects', 'mdi-jira'],
+        ['Xray', 'mdi-puzzle'],
+        ['PagerDuty', 'mdi-puzzle'],
+        ['TestRail', 'mdi-puzzle'],
+        ['API Integration Guide', 'mdi-code-brackets'],
+        ['API Keys', 'mdi-key'],
+      ],
+      reporting_and_performance_metrics: [
+        ['PDF Action Log Report', 'mdi-file-pdf-box'],
+        ['Test Health Report', 'mdi-file'],
+        ['Browser Health Report', 'mdi-chart-donut'],
+        ['Performance Metrics', 'mdi-chart-box-outline'],
+      ],
+      release: [
+        ['5.0.16', 'mdi-code-tags'],
+        ['5.0.15', 'mdi-code-tags'],
+        ['5.0.14', 'mdi-code-tags'],
+        ['5.0.13', 'mdi-code-tags'],
+        ['5.0.12', 'mdi-code-tags'],
+        ['5.0.11', 'mdi-code-tags'],
+        ['5.0.10', 'mdi-code-tags'],
+        ['5.0.9', 'mdi-code-tags'],
+        ['5.0.8', 'mdi-code-tags'],
+        ['5.0.7', 'mdi-code-tags'],
+        ['5.0.6', 'mdi-code-tags'],
+        ['5.0.5', 'mdi-code-tags'],
+        ['5.0.4', 'mdi-code-tags'],
+        ['5.0.3', 'mdi-code-tags'],
+        ['5.0.2', 'mdi-code-tags'],
+        ['5.0.1', 'mdi-code-tags'],
+        ['5.0.0', 'mdi-code-tags'],
+        ['4.2.9', 'mdi-code-tags'],
+        ['4.2.8', 'mdi-code-tags'],
+        ['4.2.7', 'mdi-code-tags'],
+        ['4.2.6', 'mdi-code-tags'],
+        ['4.2.5', 'mdi-code-tags'],
+        ['4.2.4', 'mdi-code-tags'],
+        ['4.2.3', 'mdi-code-tags'],
+        ['4.2.2', 'mdi-code-tags'],
+        ['4.2.1', 'mdi-code-tags'],
+        ['4.2.0', 'mdi-code-tags'],
+        ['4.1.0', 'mdi-code-tags'],
+        ['4.0.0', 'mdi-code-tags'],
+        ['3.19.0', 'mdi-code-tags'],
+        ['3.19.0', 'mdi-code-tags'],
+        ['3.19.0', 'mdi-code-tags'],
+        ['3.19.0', 'mdi-code-tags'],
+        ['3.18.0', 'mdi-code-tags'],
+        ['3.17.0', 'mdi-code-tags'],
+        ['3.16.0', 'mdi-code-tags'],
+        ['3.15.0', 'mdi-code-tags'],
+        ['3.14.0', 'mdi-code-tags'],
+        ['3.13.0', 'mdi-code-tags'],
+        ['3.12.0', 'mdi-code-tags'],
+        ['3.11.0', 'mdi-code-tags'],
+        ['3.10.0', 'mdi-code-tags'],
+        ['3.9.0', 'mdi-code-tags'],
+        ['3.8.0', 'mdi-code-tags'],
+        ['3.7.0', 'mdi-code-tags'],
+        ['3.6.0', 'mdi-code-tags'],
+        ['3.5.0', 'mdi-code-tags'],
+        ['3.4.0', 'mdi-code-tags'],
+        ['3.3.0', 'mdi-code-tags'],
+        ['3.2.0', 'mdi-code-tags'],
+        ['3.1.0', 'mdi-code-tags'],
+      ],
+      architect_version: [
+        ['2.1.99', 'mdi-code-tags'],
+        ['2.1.84', 'mdi-code-tags'],
+        ['2.1.76', 'mdi-code-tags'],
+        ['2.1.49', 'mdi-code-tags'],
+        ['2.1.34', 'mdi-code-tags'],
+        ['2.1.22', 'mdi-code-tags'],
+        ['2.1.0', 'mdi-code-tags'],
+        ['2.0.0', 'mdi-code-tags'],
+        ['1.4.73', 'mdi-code-tags'],
+        ['1.4.70', 'mdi-code-tags'],
+        ['1.4.59', 'mdi-code-tags'],
+        ['1.4.33', 'mdi-code-tags'],
+        ['1.4.18', 'mdi-code-tags'],
+        ['1.4.08', 'mdi-code-tags'],
+        ['1.4.07', 'mdi-code-tags'],
+        ['1.4.06', 'mdi-code-tags'],
+        ['1.3.29', 'mdi-code-tags'],
+        ['1.3.25', 'mdi-code-tags'],
+        ['1.3.08', 'mdi-code-tags'],
+        ['1.3.0', 'mdi-code-tags'],
+        ['1.2.76', 'mdi-code-tags'],
+        ['1.2.68', 'mdi-code-tags'],
+        ['1.2.40', 'mdi-code-tags'],
+        ['1.2.37', 'mdi-code-tags'],
+        ['1.2.1', 'mdi-code-tags'],
+      ],
+      feature_highlights: [
+        ['Release v5.0 Feature Highlights', 'mdi-text'],
+        ['Release v4.1 Feature Highlights', 'mdi-text'],
+        ['Release 4.0 Feature Highlights', 'mdi-text'],
+        ['Release v3.19.0 Feature Highlights', 'mdi-text'],
+        ['New Navigation Highlights', 'mdi-text'],
+        ['Reporting Highlights', 'mdi-text'],
+        ['Keyboard Shortcuts', 'mdi-keyboard-outline'],
+      ],
+      faq: [
+        ['What is Functionize?', 'mdi-help-circle-outline'],
+        ['How Does Functionize work?', 'mdi-help-circle-outline'],
+        ['What Software is Required to Use Functionize?', 'mdi-help-circle-outline'],
+        ['What is Functional Testing?', 'mdi-help-circle-outline'],
+        ['Who is Functionize For?', 'mdi-help-circle-outline'],
+        ['What Downloads are Required to Use Functionize?', 'mdi-help-circle-outline'],
+        ['What Are the Advantages of Functionize?', 'mdi-help-circle-outline'],
+        ['What is the Functionize Modeling Process?', 'mdi-help-circle-outline'],
+        ['Why Do Test Cases Self Heal When They Should Have Failed? ', 'mdi-help-circle-outline'],
+        ['What is an API?', 'mdi-help-circle-outline'],
+        ['What are API Calls?', 'mdi-help-circle-outline'],
+        ['Does Functionize Offer API Integration?', 'mdi-help-circle-outline'],
+        ['How are Browser Updates Handled?', 'mdi-help-circle-outline'],
+        ['Do You Support the Testing of Different Screen Resolutions?', 'mdi-help-circle-outline'],
+        ['What is a Group Orchestration?', 'mdi-help-circle-outline'],
+        ['How Long Does it Take to Run a Test in Functionize?', 'mdi-help-circle-outline'],
+        ['Can I Integrate with ...?', 'mdi-help-circle-outline'],
+        ['Can We Export our Test Cases into a Selenium Script?', 'mdi-help-circle-outline'],
+        ['Do You Support Native Apps?', 'mdi-help-circle-outline'],
+        ['Do you Offer 24/7 Support?', 'mdi-help-circle-outline'],
+        ['Do Tests Run on Physical or Emulated Devices?', 'mdi-help-circle-outline'],
+        ['Does the live tracking widget need access to our source code?', 'mdi-help-circle-outline'],
+        ['Does the live tracking widget store user credentials and other sensitive information?', 'mdi-help-circle-outline'],
+        ['How many virtual machines do I get for the month with Functionize?', 'mdi-help-circle-outline'],
+        ['There are a lot of screen shots stored by the tests as they run.  Can I turn off the storage of such information?', 'mdi-help-circle-outline'],
+        ['How do you ensure that our data is secure?', 'mdi-help-circle-outline'],
+        ['How do I create an optional verify action for click or input actions?', 'mdi-help-circle-outline'],
       ],
       cruds: [
         ['Create', 'mdi-plus-outline'],
